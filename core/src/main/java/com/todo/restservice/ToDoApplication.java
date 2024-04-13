@@ -3,11 +3,11 @@ package com.todo.restservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class RestServiceApplication {
+@SpringBootApplication(scanBasePackages = "com.todo")
+public class ToDoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestServiceApplication.class, args);
+		SpringApplication.run(ToDoApplication.class, args);
 	}
 
 }
