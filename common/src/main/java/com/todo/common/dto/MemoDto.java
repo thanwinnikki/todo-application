@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class MemoDto {
-    private int id;
+    private long id;
     private String name;
     private String tag;
 
