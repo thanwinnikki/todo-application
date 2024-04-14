@@ -59,3 +59,8 @@ According to best practices of Spring Boot Applications, there are different lay
 4. Service
 - Contains the business logic of the application. Business validations can also be done here. I have chosen to contain the repository class in this as well to interact with the DB.
 - The DB used is SQLite, the decision was made to showcase a non-JPA based mechanism to interact with a non-native DB.
+
+## Optional Component
+1. Added Swagger Documentation.
+Please find the [swagger documentation](swagger.yaml).
+   
