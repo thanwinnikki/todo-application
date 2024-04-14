@@ -8,7 +8,6 @@ import com.todo.common.dto.MemoDto;
 import com.todo.common.dto.mappers.MemoMapper;
 import com.todo.repository.MemoEntityDao;
 
-import lombok.AllArgsConstructor;
 
 @Service
 public class MemoUpdateServiceImpl implements  MemoUpdateService {

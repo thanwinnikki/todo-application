@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.todo.common.domain.Memo;
 import com.todo.common.domain.MemoEntity;
+import com.todo.common.domain.MemoTagSearch;
 import com.todo.common.dto.MemoTagSearchDto;
 import com.todo.common.dto.MemoDto;
 import com.todo.common.dto.MemoSearchDto;
@@ -14,8 +15,6 @@ import com.todo.service.MemoUpdateService;
 
 import lombok.AllArgsConstructor;
 
-import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,19 +35,21 @@ public class ToDoController {
 
   @PostMapping(value = "/post/single/memo")
   public ResponseEntity<Void> postMemo(@RequestBody MemoDto memoDto) {
-    memoSaveService.saveMemo(memoDto);
+    Memo memo = MemoMapper.INSTANCE.MemoDTOMapper(memoDto);
+    memoSaveService.saveMemo(memo);
     return ResponseEntity.accepted().build();
   }
 
   @GetMapping(value = "/get/single/memo")
-  public ResponseEntity<Memo> getMemo(@RequestBody MemoSearchDto memoSearch) {
-    Memo responseMemo = memoFetchService.fetchSingleMemo(memoSearch);
+  public ResponseEntity<MemoEntity> getMemo(@RequestBody MemoSearchDto memoSearch) {
+    MemoEntity responseMemo = memoFetchService.fetchSingleMemo(memoSearch);
     return ResponseEntity.ok(responseMemo);
   }
 
   @GetMapping(value = "/get/tag/memo")
-  public ResponseEntity<List<MemoEntity>> getTagMemo(@RequestBody MemoTagSearchDto memoSearch) {
-    List<MemoEntity> responseMemo = memoFetchService.fetchTagMemos(memoSearch);
+  public ResponseEntity<List<MemoEntity>> getTagMemo(@RequestBody MemoTagSearchDto memoTagSearchDto) {
+    MemoTagSearch memoTagSearch = MemoMapper.INSTANCE.MemoTagSearchDTOMapper(memoTagSearchDto);
+    List<MemoEntity> responseMemo = memoFetchService.fetchTagMemos(memoTagSearch);
     return ResponseEntity.ok(responseMemo);
   }
 
@@ -66,7 +67,6 @@ public class ToDoController {
 
   @DeleteMapping(value = "/delete/single/memo")
   public ResponseEntity<MemoDto> deleteMemo(@RequestBody MemoDto memoDto) {
-//    Memo memo = MemoMapper.INSTANCE.MemoDtoToMemoMapper(memoDto);
     memoUpdateService.deleteMemo(memoDto);
     return ResponseEntity.ok(memoDto);
   }

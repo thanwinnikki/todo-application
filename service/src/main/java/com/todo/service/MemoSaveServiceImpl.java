@@ -5,11 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.todo.common.domain.Memo;
 import com.todo.common.domain.MemoEntity;
-import com.todo.common.dto.MemoDto;
 import com.todo.common.dto.mappers.MemoMapper;
 import com.todo.repository.MemoEntityDao;
-
-import lombok.AllArgsConstructor;
 
 @Service
 public class MemoSaveServiceImpl implements MemoSaveService {
@@ -21,9 +18,8 @@ public class MemoSaveServiceImpl implements MemoSaveService {
     }
 
     @Override
-    public void saveMemo(MemoDto memoDto) {
-        // TODO interaction with db to save Memos
-        MemoEntity memoEntity = MemoMapper.INSTANCE.MemoDTOToMemoEntityMapper(memoDto);
+    public void saveMemo(Memo memoDto) {
+        MemoEntity memoEntity = MemoMapper.INSTANCE.MemoToMemoEntity(memoDto);
         memoEntityDao.save(memoEntity);
     }
 }
