@@ -1,6 +1,5 @@
 package com.todo.common.domain;
 
-
 import com.todo.common.domain.enums.Tag;
 
 import lombok.AllArgsConstructor;
@@ -9,13 +8,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public final class Memo {
-    private int id;
-    private String name;
+@Builder
+public class MemoTagSearch {
     private Tag tag;
 }
