@@ -1,6 +1,6 @@
 package com.todo.service;
 
-import com.todo.common.dto.domain.MemoDto;
+import com.todo.common.dto.MemoDto;
 
 public interface MemoUpdateService {
     public void updateMemo(MemoDto memoDto);

@@ -1,4 +1,4 @@
-package com.todo.common.dto.enums;
+package com.todo.common.domain.enums;
 
 import lombok.AllArgsConstructor;
 

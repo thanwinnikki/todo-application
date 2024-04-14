@@ -1,7 +1,5 @@
 package com.todo.common.dto;
 
-import com.todo.common.domain.enums.Tag;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class MemoTagSearchDto {
+public class MemoDto {
+    private int id;
+    private String name;
     private String tag;
+
 }

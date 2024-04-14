@@ -2,7 +2,7 @@ package com.todo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.todo.common.dto.domain.MemoDto;
+import com.todo.common.dto.MemoDto;
 
 import lombok.AllArgsConstructor;
 
