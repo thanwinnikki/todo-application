@@ -6,7 +6,8 @@ import com.todo.common.domain.Memo;
 import com.todo.common.dto.MemoTagSearchDto;
 import com.todo.common.dto.MemoDto;
 import com.todo.common.dto.MemoSearchDto;
-import com.todo.common.dto.mappers.MemoDtoMemoMapper;
+import com.todo.common.dto.mappers.MemoMapper;
+import com.todo.repository.MemoRepository;
 import com.todo.service.MemoFetchService;
 import com.todo.service.MemoSaveService;
 import com.todo.service.MemoUpdateService;
@@ -14,6 +15,7 @@ import com.todo.service.MemoUpdateService;
 import lombok.AllArgsConstructor;
 
 import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,6 @@ public class ToDoController {
   private final MemoFetchService memoFetchService;
   private final MemoSaveService memoSaveService;
   private final MemoUpdateService memoUpdateService;
-  private final MemoDtoMemoMapper memoMapper = Mappers.getMapper(MemoDtoMemoMapper.class);
 
   @PostMapping(value = "/post/single/memo")
   public ResponseEntity<Void> postMemo(@RequestBody MemoDto memoDto) {
@@ -65,7 +66,7 @@ public class ToDoController {
 
   @DeleteMapping(value = "/delete/single/memo")
   public ResponseEntity<MemoDto> deleteMemo(@RequestBody MemoDto memoDto) {
-//    Memo memo = MemoDtoMemoMapper.INSTANCE.MemoDtoToMemoMapper(memoDto);
+//    Memo memo = MemoMapper.INSTANCE.MemoDtoToMemoMapper(memoDto);
     memoUpdateService.deleteMemo(memoDto);
     return ResponseEntity.ok(memoDto);
   }

@@ -5,17 +5,21 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
+import com.todo.common.domain.MemoEntity;
 import com.todo.common.dto.MemoDto;
 import com.todo.common.domain.Memo;
 import com.todo.common.domain.enums.Tag;
 
 @Mapper(componentModel = "spring")
-public interface MemoDtoMemoMapper {
-    MemoDtoMemoMapper INSTANCE = Mappers.getMapper(MemoDtoMemoMapper.class);
+public interface MemoMapper {
+    MemoMapper INSTANCE = Mappers.getMapper(MemoMapper.class);
 
 
     @Mapping(source = "tag", target = "tag", qualifiedByName = "StringToTagEnum")
     Memo MemoDtoToMemoMapper(MemoDto memoDto);
+
+    @Mapping(source = "tag", target = "tag", qualifiedByName = "StringToTagEnum")
+    Memo MemoEntityToMemoMapper(MemoEntity memoEntity);
 
     @Named("StringToTagEnum")
     public static Tag StringToTagEnum(String stringEnum) {
