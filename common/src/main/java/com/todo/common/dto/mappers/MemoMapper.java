@@ -18,6 +18,8 @@ public interface MemoMapper {
     @Mapping(source = "tag", target = "tag", qualifiedByName = "StringToTagEnum")
     Memo MemoDtoToMemoMapper(MemoDto memoDto);
 
+    MemoEntity MemoDTOToMemoEntityMapper(MemoDto memoDto);
+
     @Mapping(source = "tag", target = "tag", qualifiedByName = "StringToTagEnum")
     Memo MemoEntityToMemoMapper(MemoEntity memoEntity);
 

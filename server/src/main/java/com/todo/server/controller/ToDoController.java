@@ -3,11 +3,11 @@ package com.todo.server.controller;
 import java.util.List;
 
 import com.todo.common.domain.Memo;
+import com.todo.common.domain.MemoEntity;
 import com.todo.common.dto.MemoTagSearchDto;
 import com.todo.common.dto.MemoDto;
 import com.todo.common.dto.MemoSearchDto;
 import com.todo.common.dto.mappers.MemoMapper;
-import com.todo.repository.MemoRepository;
 import com.todo.service.MemoFetchService;
 import com.todo.service.MemoSaveService;
 import com.todo.service.MemoUpdateService;
@@ -47,14 +47,14 @@ public class ToDoController {
   }
 
   @GetMapping(value = "/get/tag/memo")
-  public ResponseEntity<List<Memo>> getTagMemo(@RequestBody MemoTagSearchDto memoSearch) {
-    List<Memo> responseMemo = memoFetchService.fetchTagMemos(memoSearch);
+  public ResponseEntity<List<MemoEntity>> getTagMemo(@RequestBody MemoTagSearchDto memoSearch) {
+    List<MemoEntity> responseMemo = memoFetchService.fetchTagMemos(memoSearch);
     return ResponseEntity.ok(responseMemo);
   }
 
   @GetMapping(value = "/get/all/memo")
-  public ResponseEntity<List<Memo>> getAllMemos() {
-    List<Memo> responseMemoList = memoFetchService.fetchAllMemos();
+  public ResponseEntity<List<MemoEntity>> getAllMemos() {
+    List<MemoEntity> responseMemoList = memoFetchService.fetchAllMemos();
     return ResponseEntity.ok(responseMemoList);
   }
 
