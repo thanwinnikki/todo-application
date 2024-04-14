@@ -5,5 +5,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum Tag {
   COMPLETED,
-  URGENT
+  URGENT,
+  UNCOMPLETED
 }

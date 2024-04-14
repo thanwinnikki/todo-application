@@ -1,5 +1,7 @@
 package com.todo.common.dto;
 
+import com.todo.common.dto.enums.Tag;
+
 public class MemoTagSearchDto {
-    String tag;
+    Tag tag;
 }
