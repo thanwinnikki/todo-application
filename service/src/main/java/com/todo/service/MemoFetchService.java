@@ -5,7 +5,6 @@ import java.util.List;
 import com.todo.common.domain.Memo;
 import com.todo.common.dto.MemoSearchDto;
 import com.todo.common.dto.MemoTagSearchDto;
-import com.todo.common.dto.MemoDto;
 
 public interface MemoFetchService {
   public Memo fetchSingleMemo(MemoSearchDto memoSearchDto);

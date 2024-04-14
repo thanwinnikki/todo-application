@@ -2,6 +2,7 @@ package com.todo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.todo.common.domain.Memo;
 import com.todo.common.domain.MemoEntity;
@@ -20,7 +21,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemoFetchServiceImpl implements MemoFetchService{
 
-//  @Autowired
 //  private final MemoRepository memoRepository;
 //
 //  public MemoFetchServiceImpl(MemoRepository memoRepository) {
@@ -30,8 +30,9 @@ public class MemoFetchServiceImpl implements MemoFetchService{
   @Override
   public Memo fetchSingleMemo(MemoSearchDto memoSearchDto) {
     Memo memo = Memo.builder().id(1).name("Memo1").tag(Tag.COMPLETED).build();
-//    MemoEntity memoEntity = memoRepository.findMemo(memoSearchDto.getId());
-//    Memo memo = MemoMapper.INSTANCE.MemoEntityToMemoMapper(memoEntity);
+//    Optional<MemoEntity> memoEntity = memoRepository.findById(memoSearchDto.getId());
+//
+//    Memo memo = MemoMapper.INSTANCE.MemoEntityToMemoMapper(memoEntity.get());
     return memo;
   }
 

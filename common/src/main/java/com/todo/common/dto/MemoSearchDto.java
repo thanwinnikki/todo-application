@@ -12,5 +12,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MemoSearchDto {
-  private int id;
+  private long id;
 }
