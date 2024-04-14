@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: Todo Server API
+  version: 1.0.0
+  description: |
+    This API provides endpoints for managing memos in a Todo application.
+  contact:
+    name: Nikki Than Win
+    email: thanwinnikki@gmail.com
+tags:
+  - name: Memos
+    description: All Memo related operations.
+paths:
+  /v1/post/single/memo:
+    post:
+      tags:
+      - Memos
+      summary: Create a Memo
+      operationId: postMemo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoDto'
+      responses:
+        '202':
+          description: Memo created successfully
+  /v1/get/single/memo:
+    get:
+      tags:
+      - Memos
+      summary: Get a Memo
+      operationId: getMemo
+      parameters:
+        - name: memoSearch
+          in: query
+          description: Search criteria for the memo
+          required: true
+          schema:
+            $ref: '#/components/schemas/MemoSearchDto'
+      responses:
+        '200':
+          description: Memo retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoEntity'
+  /v1/get/tag/memo:
+    get:
+      tags:
+      - Memos
+      summary: Get Memos by Tag
+      operationId: getTagMemo
+      parameters:
+        - name: memoTagSearchDto
+          in: query
+          description: Search criteria for the memo tag
+          required: true
+          schema:
+            $ref: '#/components/schemas/MemoTagSearchDto'
+      responses:
+        '200':
+          description: Memos retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MemoEntity'
+  /v1/get/all/memo:
+    get:
+      tags:
+      - Memos
+      summary: Get All Memos
+      operationId: getAllMemos
+      responses:
+        '200':
+          description: Memos retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MemoEntity'
+  /v1/patch/single/memo:
+    patch:
+      tags:
+      - Memos
+      summary: Update a Memo
+      operationId: updateMemo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoDto'
+      responses:
+        '200':
+          description: Memo updated successfully
+  /v1/delete/single/memo:
+    delete:
+      tags:
+      - Memos
+      summary: Delete a Memo
+      operationId: deleteMemo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemoDto'
+      responses:
+        '200':
+          description: Memo deleted successfully
+components:
+  schemas:
+    MemoDto:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The unique identifier of the memo.
+          example: 1
+        name:
+          type: string
+          description: The title of the memo.
+          example: Memo1
+        tag:
+          type: string
+          description: The tag of the memo.
+          example: COMPLETED
+    MemoSearchDto:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The unique identifier of the memo.
+          example: 1
+    MemoTagSearchDto:
+      type: object
+      properties:
+        tag:
+          type: string
+          description: The tag of the memo.
+          example: UNCOMPLETED
+    MemoEntity:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The unique identifier of the memo.
+        name:
+          type: string
+          description: The title of the memo.
+          example: Memo1
+        tag:
+          type: string
+          description: The tag of the memo. This is enumerated, it will return from the list of the following. UNCOMPLETED, COMPLETED, URGENT.
+          example: COMPLETED
